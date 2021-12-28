@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Lambda03 {
     public static void main(String[] args) {
@@ -31,17 +32,32 @@ public class Lambda03 {
         System.out.println();
         System.out.println("***x");
         xBaslayanKontrol(list);
+        System.out.println();
+        System.out.println("**karakteri en buyukx");
         karakteriEnBuyukEl(list);
+        System.out.println();
+        System.out.println("***sonharfe gore ilk elemean haric***");
+        ilkElemanharicSonHarf(list);
 
+
+    }
+
+    private static void ilkElemanharicSonHarf(List<String> list) {
+        list.
+                stream().
+                sorted(Comparator.comparing(t->t.toString().charAt(t.length()-1))).
+                skip(1).forEach(System.out::println);
     }
 
     //Karakter sayisi en buyuk elemani yazdiriniz.
     public static void karakteriEnBuyukEl(List<String> list){
-        System.out.println(list.
+        Stream<String> sonIsim = list.
                 stream().
                 sorted(Comparator.comparing(t -> t.toString().length()).//lenght karakter uzunluguna gore siraladi k->b
                         reversed()).//ters sirlad b->k
-                        findFirst());//ilk elelmni aldi
+                // findFirst()).
+                        limit(2);//ilk elelmni aldi
+        System.out.println(Arrays.toString(sonIsim.toArray()));
 
     }
 
@@ -119,4 +135,6 @@ public class Lambda03 {
         //EMRE EMİNE KADER MEHMET NİLGUN YILDIZ İSLAM
 
     }
+
+
 }

@@ -149,6 +149,7 @@ public class Lambda01 {
         }
         Math.random();
 
+
     }
 
 
